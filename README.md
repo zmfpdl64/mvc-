@@ -100,3 +100,44 @@ hello-form
     private String name;
     private int age;
     }
+
+<h1>Response에 정보 담기</h1>
+
+1. response.setContentType("text/plain");
+    response.setCharacterEncoding("utf-8");
+2. response.setHeader("Cache-Control", "no_Cache, must_revalidate, no_store)
+3. response.setStatus(HttpServletResponse.SC_OK);
+4. response.addCookie(cookie);
+5. response.sendRedirect("/basic/hello-form.html");
+
+
+<h1>HTTP 응답 데이터 - 단순데이터, HTML</h1>
+
+    PrintWriter writer = response.getWriter();
+    writer.println("<html> <body><div>hello</div></body></html>);
+writer에 태그를 담아 전달하면 tag형식으로 화면이 출력된다.
+
+
+<h1>Json 형식의 데이터 전달</h1>
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
+
+        HelloData helloData = new HelloData();
+        helloData.setName("kim");
+        helloData.setAge(20);
+
+        //{"name":"kim", "age:20}
+        String result = objectMapper.writeValueAsString(helloData);
+        response.getWriter().write(result);
+
+request의 json형식이랑 거의 동일하다. objectMapper를 이용하여 객체를 스트링으로 변환하고 response에 담는것이다.
+
+
+
+<h1>JSP방식을 사용하기 위한 환경설정</h1>
+
+build.gradle에서 필요한 라이브러리를 추가한다.
+
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	implementation 'javax.servlet:jstl'
