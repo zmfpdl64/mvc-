@@ -1,6 +1,5 @@
 package hello.servlet.basic.servlet.web.frontcontroller.v1;
 
-import hello.servlet.basic.servlet.web.frontcontroller.FrontControllerServletV1;
 import hello.servlet.domain.member.Member;
 import hello.servlet.domain.member.MemberRepository;
 
