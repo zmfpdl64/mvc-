@@ -141,3 +141,11 @@ build.gradle에서 필요한 라이브러리를 추가한다.
 
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'javax.servlet:jstl'
+
+<h1>V5 어뎁터를 이용한 프론트컨트롤러 변경</h1>
+
+1. url신호로 어떤 컨트롤러를 불러와야하는지 확인한다.
+2. 예를들어 V3의 컨트롤러로 인식을하였다면 V5에서 선언한 V3Adapter를 사용한다.
+3. adapter.handle을 통해 논리파일이름, key, value를 ModelView에 담는다.
+4. ModelView에 저장된 논리경로를 MyView에 설정하여 물리경로를 설정하고
+5. MyView.render를 통해 해당 템플릿에 key, value를 전달한다.
