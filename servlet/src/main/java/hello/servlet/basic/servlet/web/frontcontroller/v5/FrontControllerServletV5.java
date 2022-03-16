@@ -6,7 +6,11 @@ import hello.servlet.basic.servlet.web.frontcontroller.v3.ControllerV3;
 import hello.servlet.basic.servlet.web.frontcontroller.v3.controller.MemberFormControllerV3;
 import hello.servlet.basic.servlet.web.frontcontroller.v3.controller.MemberListControllerV3;
 import hello.servlet.basic.servlet.web.frontcontroller.v3.controller.MemberSaveControllerV3;
+import hello.servlet.basic.servlet.web.frontcontroller.v4.controller.MemberFormControllerV4;
+import hello.servlet.basic.servlet.web.frontcontroller.v4.controller.MemberListControllerV4;
+import hello.servlet.basic.servlet.web.frontcontroller.v4.controller.MemberSaveControllerV4;
 import hello.servlet.basic.servlet.web.frontcontroller.v5.adapter.ControllerV3HandlerAdapter;
+import hello.servlet.basic.servlet.web.frontcontroller.v5.adapter.ControllerV4HandlerAdapter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,12 +35,16 @@ public class FrontControllerServletV5 extends HttpServlet {
 
     private void initHandlerAdapters() {
         handlerAdapters.add(new ControllerV3HandlerAdapter());
+        handlerAdapters.add(new ControllerV4HandlerAdapter());
     }
 
     private void initHandlerMapping() {
         handlerMappingMap.put("/front-controller/v5/v3/members/new-form", new MemberFormControllerV3());
         handlerMappingMap.put("/front-controller/v5/v3/members/save", new MemberSaveControllerV3());
         handlerMappingMap.put("/front-controller/v5/v3/members", new MemberListControllerV3());
+        handlerMappingMap.put("/front-controller/v5/v4/members/new-form", new MemberFormControllerV4());
+        handlerMappingMap.put("/front-controller/v5/v4/members/save", new MemberSaveControllerV4());
+        handlerMappingMap.put("/front-controller/v5/v4/members", new MemberListControllerV4());
     }
 
     @Override
@@ -53,7 +61,7 @@ public class FrontControllerServletV5 extends HttpServlet {
         MyHandlerAdapter adapter = getMyHandler(handler);
         //Instanceof를 통해 ControllerV3를 상속, 구현 하고 있냐?
         //있으면 V5에서 생성한 V#Adapter를 반환한다.
-        System.out.println("안녕하세요2");
+//        System.out.println("안녕하세요2");
 
         ModelView mv = adapter.handle(request, response, handler);
         //key, value, 렌더링 논리파일이름 포함한 mv 반환

@@ -149,3 +149,10 @@ build.gradle에서 필요한 라이브러리를 추가한다.
 3. adapter.handle을 통해 논리파일이름, key, value를 ModelView에 담는다.
 4. ModelView에 저장된 논리경로를 MyView에 설정하여 물리경로를 설정하고
 5. MyView.render를 통해 해당 템플릿에 key, value를 전달한다.
+
+<h1>V5 어뎁터를 이용한 프론트컨트롤러 V4추가하기</h1>
+
+V3방식과 매우 유사하지만 V4방식은 렌더링할때 String문자열을 받아 렌더링을 했었다.
+
+하지만 ModelView방식으로 동일해야하기 때문에 ModelView에 SetName(파일 논리 이름), setModel(key:value)를 추가하여 전달한다.
+
